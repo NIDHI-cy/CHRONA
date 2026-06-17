@@ -1,82 +1,223 @@
-# Spec-First Development
+# Chrona
 
-This folder contains design documents for features in development. Claude reads these to understand what to build and track progress.
+Chrona is a full-stack scheduling and calendar management platform that streamlines meeting coordination through automated booking, availability management, recurring event scheduling, and calendar synchronization. Built with modern web technologies, Chrona enables individuals and teams to efficiently manage schedules while ensuring secure collaboration and seamless video conferencing integration.
 
-## How It Works
+---
 
-1. **Before implementing a feature**, create a spec folder with design docs
-2. **Claude reads the design** before writing any code
-3. **Progress is tracked** in implementation.md for session continuity
-4. **Decisions are recorded** in decisions.md for future reference
-5. **Docs are generated** with screenshots when feature is complete
+## Features
 
-## Starting a New Feature
+- Conflict-aware meeting scheduling
+- Multi-user availability management
+- Timezone-aware booking workflows
+- Recurring event scheduling
+- Team and organizational scheduling
+- Calendar synchronization
+- Secure authentication and access control
+- Audit logging and activity tracking
+- Daily.co video conferencing integration
+- Real-time scheduling management
+
+---
+
+## Built With
+
+- Next.js
+- React.js
+- TypeScript
+- tRPC
+- Tailwind CSS
+- Prisma ORM
+- Daily.co
+
+---
+
+## Tech Stack
+
+### Frontend
+- Next.js
+- React.js
+- TypeScript
+- Tailwind CSS
+
+### Backend
+- tRPC
+
+### Database & ORM
+- Prisma ORM
+
+### Integrations
+- Daily.co
+
+### Development Tools
+- Git
+- GitHub
+- VS Code
+
+---
+
+## System Architecture
+
+Chrona follows a modern full-stack architecture:
+
+- **Next.js** powers the frontend and scheduling workflows.
+- **React.js** provides reusable UI components and state-driven interactions.
+- **tRPC** enables end-to-end type-safe communication between frontend and backend.
+- **Prisma ORM** manages database schema and data access.
+- **Daily.co** provides integrated video conferencing capabilities.
+- **Role-based access controls and audit logging** ensure secure and traceable scheduling operations.
+
+---
+
+## Technical Highlights
+
+### Intelligent Scheduling
+Implemented conflict-aware scheduling workflows supporting participant availability management, timezone-aware booking, and recurring event scheduling.
+
+### Access Control
+Designed secure scheduling workflows with role-based permissions to support team collaboration and organizational scheduling.
+
+### Video Conferencing Integration
+Integrated Daily.co to enable seamless meeting creation and video conferencing directly within scheduling workflows.
+
+### Auditability
+Implemented activity tracking and audit logging for event creation, updates, cancellations, and user actions.
+
+### Scalable Data Management
+Utilized Prisma ORM for efficient management of scheduling entities, user data, event metadata, and organizational workflows.
+
+---
+
+## Development Setup
+
+### Prerequisites
+
+- Node.js (v18 or above)
+- npm or yarn
+
+### Installation
+
+Clone the repository:
 
 ```bash
-cp -r specs/_templates specs/{feature-name}
+git clone https://github.com/NIDHI-cy/CHRONA.git
+cd CHRONA
 ```
 
-Then tell Claude:
-```
-"I want to build {feature}. Here's my idea: [description].
-Review the codebase and fill in specs/{feature}/design.md"
-```
+Install dependencies:
 
-## File Structure
-
-Each feature has:
-
-| File/Folder | Purpose |
-|-------------|---------|
-| `CLAUDE.md` | Instructions for Claude when working on this feature |
-| `design.md` | Source of truth - what to build and how |
-| `implementation.md` | Progress tracking - what's done, in progress, blocked |
-| `decisions.md` | Architecture Decision Records (ADRs) |
-| `prompts.md` | Reusable prompts for common tasks |
-| `future-work.md` | Deferred ideas and enhancements |
-| `docs/` | Internal documentation with screenshots |
-| `docs/screenshots/` | Screenshots captured during development |
-
-## Session Continuity
-
-When starting a new Claude session:
-```
-"Continue working on {feature}"
+```bash
+npm install
 ```
 
-Claude will read `implementation.md` to pick up where it left off.
+or
 
-## Generating Documentation
-
-When a feature is ready for documentation:
-```
-"Generate docs with screenshots for {feature}"
+```bash
+yarn
 ```
 
-Claude will:
-1. Open the feature in browser
-2. Take screenshots of key UI states
-3. Save to `specs/{feature}/docs/screenshots/`
-4. Update `specs/{feature}/docs/README.md`
+Configure environment variables:
 
-## Promoting to Public Docs
-
-When internal docs are ready for customers:
-```
-"Promote {feature} docs to public"
+```env
+DATABASE_URL=
+NEXTAUTH_SECRET=
+NEXTAUTH_URL=
 ```
 
-Claude will:
-1. Copy content to `docs/{feature}.mdx` (Mintlify format)
-2. Move screenshots to `docs/images/{feature}/`
-3. Update `docs/mint.json` navigation
-4. Adjust language for customer audience
+Run database migrations:
 
-## The Most Important Rule
+```bash
+npx prisma migrate dev
+```
 
-Every PR must be reviewable in under 10 minutes:
-- Max 5-7 files changed (excluding tests)
-- Max 500 lines changed
-- One focused change per PR
+Start the development server:
 
-If your change is bigger, split it into multiple PRs.
+```bash
+npm run dev
+```
+
+or
+
+```bash
+yarn dev
+```
+
+Open your browser:
+
+```text
+http://localhost:3000
+```
+
+---
+
+## Deployment
+
+### Production Build
+
+```bash
+npm run build
+```
+
+or
+
+```bash
+yarn build
+```
+
+### Start Production Server
+
+```bash
+npm start
+```
+
+or
+
+```bash
+yarn start
+```
+
+### Deploy on Vercel
+
+```bash
+vercel deploy
+```
+
+### Docker Deployment
+
+Build Docker image:
+
+```bash
+docker build -t chrona .
+```
+
+Run Docker container:
+
+```bash
+docker run -p 3000:3000 chrona
+```
+
+---
+
+## Challenges Solved
+
+- Multi-user scheduling conflict resolution
+- Timezone normalization across distributed users
+- Recurring event lifecycle management
+- Team-based scheduling workflows
+- Secure access management and activity tracking
+- Video conferencing integration within scheduling workflows
+
+---
+
+## Future Enhancements
+
+- AI-powered meeting recommendations
+- Smart scheduling assistant
+- Automated reminders and notifications
+- Advanced scheduling analytics
+- Team productivity insights
+
+---
+
+## Author
+
+**Nidhi Rayankula**
